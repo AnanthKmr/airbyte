@@ -21,9 +21,12 @@ class ExchangeRates(HttpStream):
     def __init__(self, config: Mapping[str, Any], start_date: datetime, **kwargs):
         super().__init__()
         self.base = config["base"]
-        self.access_key = config["apikey"]
+        self.apikey = config["apikey"]
         self.start_date = start_date
         self._cursor_value = None
+        print("==========================================")
+        print(config)
+        print("===========================================")
 
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
         # The API does not offer pagination, so we return None to indicate there are no more pages in the response

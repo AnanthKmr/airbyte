@@ -1,0 +1,10 @@
+README.md
+setup.py
+source_python_http_tutorial/__init__.py
+source_python_http_tutorial/source.py
+source_python_http_tutorial/spec.json
+source_python_http_tutorial.egg-info/PKG-INFO
+source_python_http_tutorial.egg-info/SOURCES.txt
+source_python_http_tutorial.egg-info/dependency_links.txt
+source_python_http_tutorial.egg-info/requires.txt
+source_python_http_tutorial.egg-info/top_level.txt
