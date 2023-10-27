@@ -18,7 +18,7 @@ class ExchangeRates(HttpStream):
     cursor_field = "date"
     primary_key = "date"
 
-    def __init__(self, config: Mapping[str, Any], start_date: datetime, **kwargs):
+    def __init__(self, config: Mapping[str, Any], start_date: datetime, threshold: int, **kwargs):
         super().__init__()
         self.base = config["base"]
         self.apikey = config["apikey"]
@@ -123,4 +123,4 @@ class SourcePythonHttpTutorial(AbstractSource):
         auth = NoAuth()
         # Parse the date from a string into a datetime object
         start_date = datetime.strptime(config["start_date"], "%Y-%m-%d")
-        return [ExchangeRates(authenticator=auth, config=config, start_date=start_date)]
+        return [ExchangeRates(authenticator=auth, config=config, start_date=start_date,threshold = config["threshold"])]
