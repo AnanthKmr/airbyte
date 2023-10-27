@@ -8,6 +8,9 @@
     "base": {
       "type": "string"
     },
+    "threshold": {
+      "type": "number"
+    },
     "rates": {
       "type": "object",
       "properties": {
