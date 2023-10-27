@@ -123,4 +123,7 @@ class SourcePythonHttpTutorial(AbstractSource):
         auth = NoAuth()
         # Parse the date from a string into a datetime object
         start_date = datetime.strptime(config["start_date"], "%Y-%m-%d")
+        print("===================================")
+        print("Threshold config value: " + str(config["threshold"]))
+        print("======================================")
         return [ExchangeRates(authenticator=auth, config=config, start_date=start_date,threshold = config["threshold"])]
