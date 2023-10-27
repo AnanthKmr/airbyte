@@ -23,9 +23,12 @@ class ExchangeRates(HttpStream):
         self.base = config["base"]
         self.apikey = config["apikey"]
         self.start_date = start_date
+        self.threshold = config["threshold"]
         self._cursor_value = None
         print("==========================================")
-        print(config)
+        print(self.base)
+        print(self.apikey)
+        print(self.threshold)
         print("===========================================")
 
     def next_page_token(self, response: requests.Response) -> Optional[Mapping[str, Any]]:
@@ -61,6 +64,11 @@ class ExchangeRates(HttpStream):
     ) -> Iterable[Mapping]:
         # The response is a simple JSON whose schema matches our stream's schema exactly,
         # so we just return a list containing the response
+        print("========================================")
+        day_count = len(self._chunk_date_range(self.start_date))
+        print("Number of days: " + str(day_count))
+        if(day_count > self.threshold):
+            raise Exception("Threshold condition failed.")
         return [response.json()]
 
     def get_updated_state(self, current_stream_state: MutableMapping[str, Any], latest_record: Mapping[str, Any]) -> Mapping[str, any]:
